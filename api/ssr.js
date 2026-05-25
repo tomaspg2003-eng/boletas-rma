@@ -1,14 +1,11 @@
-import { fileURLToPath } from 'url'
-import { dirname, resolve } from 'path'
-
-const __filename = fileURLToPath(import.meta.url)
-const __dirname = dirname(__filename)
+import { join } from 'path'
 
 let cachedHandler
 
 async function getHandler() {
   if (!cachedHandler) {
-    const mod = await import(resolve(__dirname, '../dist/server/server.js'))
+    const serverPath = join(process.cwd(), 'dist', 'server', 'server.js')
+    const mod = await import(serverPath)
     cachedHandler = mod.default
   }
   return cachedHandler
