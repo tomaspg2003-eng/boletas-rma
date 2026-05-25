@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+const _BUILD = "v2";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import {
   Outlet,
