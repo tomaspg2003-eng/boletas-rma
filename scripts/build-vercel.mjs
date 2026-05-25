@@ -32,6 +32,9 @@ await mkdir(FUNC, { recursive: true })
 await cp('dist/server', FUNC, { recursive: true })
 console.log('✓ Server bundle →', FUNC)
 
+// Tell Node.js to treat .js files as ESM (the server bundle uses import/export)
+await writeFile(`${FUNC}/package.json`, JSON.stringify({ type: 'module' }, null, 2))
+
 // Vercel function config
 // server.js exports `export default { async fetch(request, env, ctx) }`
 // which Vercel Fluid Compute (Node.js) supports natively.
@@ -42,7 +45,7 @@ await writeFile(`${FUNC}/.vc-config.json`, JSON.stringify({
   shouldAddHelpers: false,
   supportsResponseStreaming: true
 }, null, 2))
-console.log('✓ .vc-config.json written')
+console.log('✓ .vc-config.json + package.json (type:module) written')
 
 // 3. Vercel routing config
 // - Immutable hashed assets served from CDN with long cache
