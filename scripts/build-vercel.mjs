@@ -58,6 +58,7 @@ await writeFile(`${OUTPUT}/config.json`, JSON.stringify({
       headers: { 'cache-control': 'public, max-age=31536000, immutable' },
       continue: true
     },
+    { handle: 'filesystem' },
     { src: '/(.*)', dest: '/index' }
   ]
 }, null, 2))
