@@ -12,4 +12,12 @@ export default defineConfig({
   ssr: {
     noExternal: true,
   },
+  build: {
+    rollupOptions: {
+      output: {
+        chunkFileNames: 'assets/[name]-[hash]-r2.js',
+        entryFileNames: 'assets/[name]-[hash]-r2.js',
+      },
+    },
+  },
 })
