@@ -20,6 +20,12 @@ dist-ssr
 .wrangler/
 .dev.vars
 
+# Vinxi / Nitro / Vercel build output
+.output/
+.nitro/
+.tanstack/
+.vercel/output/
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
